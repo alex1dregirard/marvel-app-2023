@@ -13,5 +13,11 @@ const getCharacters = () => {
 
 // Call getCharacters function, and add characters to the list
 const characters = getCharacters().then(characters => {
-    console.log(characters);
+    const charactersList = document.getElementById('characters');
+
+    characters.forEach(character => {
+        const characterElement = document.createElement('li');
+        characterElement.textContent = character.name;
+        charactersList.appendChild(characterElement);
+    });
 });
