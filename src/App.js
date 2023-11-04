@@ -1,16 +1,15 @@
 import './style.css';
+import { CharactersList } from './components/CharactersList';
 
 const characters = require('./data/characters.json');
 
 function App() {
+  console.log((characters));
+
   return (
     <>
       <h1>Marvel Characters</h1>
-      <ul id="characters">
-        {characters.map((character) => (
-          <li key={character.id}>{character.name}</li>
-        ))}
-      </ul>
+      <CharactersList characters={characters} />
     </>
   );
 }
