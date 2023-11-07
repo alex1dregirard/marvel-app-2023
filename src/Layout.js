@@ -6,7 +6,7 @@ const Layout = () => {
     return (
         <>
             <header>
-                <h1>Marvel App</h1>
+                <h1>Marvel App - DEMO</h1>
                 <nav>
                     <NavLink to="/">Home</NavLink> - <NavLink to="/about">About</NavLink> - <NavLink to="/contact">Contact</NavLink>
                 </nav>
@@ -15,7 +15,7 @@ const Layout = () => {
                 <Outlet />
             </main>
             <footer>
-                <p>Marvel App - 2023</p>
+                <p>Marvel App - 2023 - DEMO</p>
             </footer>
         </>
     );
