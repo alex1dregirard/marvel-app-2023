@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { useLoaderData } from 'react-router';
 import CharacterDetail from '../components/CharacterDetail';
