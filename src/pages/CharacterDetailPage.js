@@ -10,9 +10,7 @@ const CharacterDetailPage = () => {
     document.title = `${character.name} | Marvel App`;
 
     return (
-        <>
-            <CharacterDetail character={character} />
-        </>
+        <CharacterDetail character={character} />
     );
 };
 
