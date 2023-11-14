@@ -11,7 +11,7 @@ describe('CharactersDetail', () => {
             name: "Thor",
             description: "Thor description",
             thumbnail: {
-                path: "http://i.annihil.us/u/prod/marvel/i/mg/c/90/526758a9ee088",
+                path: "https://foo.bar",
                 extension: "jpg"
             }
         }
