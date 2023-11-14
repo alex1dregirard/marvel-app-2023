@@ -28,7 +28,6 @@ describe('CharactersPage', () => {
         // expect the document title to be "Marvel App"
         expect(document.title).toBe('Marvel App');
 
-
         // expect the heading 'Marvel Characters' to be in the document
         const h2Element = screen.getByRole('heading', { level: 2, name: "Marvel Characters" });
         expect(h2Element).toBeInTheDocument();

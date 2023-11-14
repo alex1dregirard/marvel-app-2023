@@ -1,6 +1,6 @@
 function CharacterDetail({ character = {} }) {
     return (
-        <div>
+        <div>            
             <h2>{character.name}</h2>
             {
                 // if character.thumbnail is not null, then render the image
