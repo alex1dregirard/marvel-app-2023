@@ -5,15 +5,40 @@ describe('character-api', () => {
   const expected = JSON.parse(fs.readFileSync('src/data/characters.json', 'utf8'));
 
   describe('getCharacters', () => {
-    test('returns an array of characters', () => {
+    it('returns all characters sorted by name ascending by default', () => {
       // when
 
       // then
       const characters = getCharacters();
 
-      // expect
-      expect(Array.isArray(characters)).toBe(true);
-      expect(characters.length).toBe(expected.length);
+      // expect the first character to be Beast
+      expect(characters[0].name).toBe('Beast');
+
+      // expect the last character to be Wolverine
+      expect(characters[characters.length - 1].name).toBe('Wolverine');
+    });
+
+    it('returns all characters sorted by modified descending', () => {
+      // when
+
+      // then
+      const characters = getCharacters('modified', 'desc');
+
+      // expect the first character to be Wolverine
+      expect(characters[0].name).toBe('Groot');
+
+      // expect the last character to be Beast
+      expect(characters[characters.length - 1].name).toBe('Hulk');
+    });
+
+    it('throws an error if orderBy is invalid', () => {
+      // when
+      const orderBy = 'foo';
+
+      // then
+      expect(() => {
+        getCharacters(orderBy);
+      }).toThrow(`Invalid orderBy parameter: ${orderBy}`);
     });
 
   });
