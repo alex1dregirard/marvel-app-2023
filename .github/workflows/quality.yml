@@ -4,7 +4,7 @@ on:
   pull_request:
 jobs:
   sonarcloud:
-    name: SonarCloud
+    name: Quality
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
