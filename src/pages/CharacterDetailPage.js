@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useLoaderData } from 'react-router';
 import CharacterDetail from '../components/CharacterDetail';
+import { StatisticsPieChart } from '../components/StatisticsPieChart';
 
 const CharacterDetailPage = () => {
     // retrieve the character using the useLoaderData hook
@@ -10,7 +11,10 @@ const CharacterDetailPage = () => {
     document.title = `${character.name} | Marvel App`;
 
     return (
-        <CharacterDetail character={character} />
+        <>
+            <CharacterDetail character={character} />
+            <StatisticsPieChart displayTooltip displayValue data={character.capacities} />
+        </>
     );
 };
 
