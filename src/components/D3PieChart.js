@@ -7,7 +7,7 @@ import * as d3 from "d3";
  * @param {*} displayTooltip 
  * @param {*} displayValue 
  */
-const drawChart = (data = [], displayTooltip = false, displayValue = false) => {
+const drawChart = (data = []) => {
     // Define the radius
     const outerRadius = 100;
 
@@ -65,14 +65,6 @@ const drawChart = (data = [], displayTooltip = false, displayValue = false) => {
         .attr("fill", d => color(d.data.name))
         .attr("d", arc)
 
-    // add tooltips
-    if (displayTooltip) {
-        svg.selectAll("path")
-            .attr("id", d => "pie-tooltip-" + d.data.name)
-            .append("title")
-            .text(d => `${d.data.name}: ${d.data.value?.toLocaleString('fr-FR')}`);
-    }
-
     // add labels over the donut
     svg.append("g")
         .attr("font-family", "sans-serif")
@@ -88,17 +80,6 @@ const drawChart = (data = [], displayTooltip = false, displayValue = false) => {
             .attr("y", "-0.4em")
             .attr("font-weight", "bold")
             .text(d => d.data.name))
-
-    // add the value of the data
-    if (displayValue) {
-        svg.selectAll("text")
-            .call(text => text.filter(d => (d.endAngle - d.startAngle) > 0.25).append("tspan")
-                .attr("id", d => `pie-labels-value-${d.data.name}`)
-                .attr("x", 0)
-                .attr("y", "0.7em")
-                .attr("fill-opacity", 0.7)
-                .text(d => d.data.value?.toLocaleString('fr-FR')));
-    }
 };
 
 /**
@@ -108,10 +89,8 @@ const drawChart = (data = [], displayTooltip = false, displayValue = false) => {
  * @param {*} displayTooltip
  * @param {*} displayValue
  */ 
-export function StatisticsPieChart({
+export function D3PieChart({
     data,
-    displayTooltip,
-    displayValue,
 }) {
     // useEffect is a hook that will run the code inside it only once when data is loaded
     useEffect(() => {
@@ -126,8 +105,8 @@ export function StatisticsPieChart({
         ]
 
         // draw the chart
-        drawChart(transformData, displayTooltip, displayValue);
-    }, [data, displayTooltip, displayValue]);
+        drawChart(transformData);
+    }, [data]);
 
     return (
         // Return the div that will contain the chart

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useLoaderData } from 'react-router';
 import CharacterDetail from '../components/CharacterDetail';
-import { StatisticsPieChart } from '../components/StatisticsPieChart';
+import { D3PieChart } from '../components/D3PieChart';
 
 const CharacterDetailPage = () => {
     // retrieve the character using the useLoaderData hook
@@ -13,7 +13,7 @@ const CharacterDetailPage = () => {
     return (
         <>
             <CharacterDetail character={character} />
-            <StatisticsPieChart displayTooltip displayValue data={character.capacities} />
+            <D3PieChart displayTooltip displayValue data={character.capacities} />
         </>
     );
 };
