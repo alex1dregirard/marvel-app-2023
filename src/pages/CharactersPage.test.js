@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import CharactersPage from './CharactersPage';
-import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { act } from 'react-dom/test-utils';
 
 const characters = [
@@ -96,7 +96,7 @@ describe('CharactersPage', () => {
         );
 
         // when
-        await act(() => {
+        await act(async () => {
             // change the order select to desc
             const orderSelect = screen.getByTestId('order');
             orderSelect.value = order;

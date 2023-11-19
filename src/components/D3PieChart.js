@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect } from "react";
 import * as d3 from "d3";
 
@@ -113,3 +114,14 @@ export function D3PieChart({
         <div id="pie-container" />
     );
 }
+
+D3PieChart.propTypes = {
+    data: PropTypes.shape({
+        force: PropTypes.number,
+        intelligence: PropTypes.number,
+        energy: PropTypes.number,
+        speed: PropTypes.number,
+        durability: PropTypes.number,
+        fighting: PropTypes.number,
+    }),
+};

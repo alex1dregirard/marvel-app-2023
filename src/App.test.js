@@ -3,7 +3,7 @@ import App from './App';
 import { act } from 'react-dom/test-utils';
 
 test('render Marvel App', async () => {
-  await act(() => {
+  await act(async() => {
     render(<App />);
   });
 

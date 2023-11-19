@@ -2,8 +2,6 @@ const { getCharacters, getCharacterById } = require('./character-api');
 const fs = require('fs');
 
 describe('character-api', () => {
-  const expected = JSON.parse(fs.readFileSync('src/data/characters.json', 'utf8'));
-
   describe('getCharacters', () => {
     it('returns all characters sorted by name ascending by default', () => {
       // when
