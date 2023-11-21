@@ -9,12 +9,12 @@
             "extension": "jpg"
         },
         "capacities": {
-            "force": "5",
-            "intelligence": "8",
-            "durability": "6",
-            "energy": "6",
-            "speed": "1",
-            "fighting": "3"
+            "force": 5,
+            "intelligence": 8,
+            "durability": 6,
+            "energy": 6,
+            "speed": 1,
+            "fighting": 3
         }
     },
     {
@@ -27,11 +27,11 @@
             "extension": "jpg"
         },
         "capacities": {
-            "force": "4",
-            "intelligence": "3",
-            "durability": "3",
-            "energy": "1",
-            "speed": "2"
+            "force": 4,
+            "intelligence": 3,
+            "durability": 3,
+            "energy": 1,
+            "speed": 2
         }
     },
     {
@@ -43,11 +43,11 @@
             "extension": "jpg"
         },
         "capacities": {
-            "force": "4",
-            "intelligence": "3",
-            "durability": "2",
-            "energy": "1",
-            "speed": "2"
+            "force": 4,
+            "intelligence": 3,
+            "durability": 2,
+            "energy": 1,
+            "speed": 2
         }
     },
     {
@@ -60,11 +60,11 @@
             "extension": "jpg"
         },
         "capacities": {
-            "force": "6",
-            "intelligence": "1",
-            "durability": "7",
-            "energy": "1",
-            "speed": "1"
+            "force": 6,
+            "intelligence": 1,
+            "durability": 7,
+            "energy": 1,
+            "speed": 1
         }
     },
     {
@@ -77,11 +77,11 @@
             "extension": "jpg"
         },
         "capacities": {
-            "force": "7",
-            "intelligence": "6",
-            "durability": "7",
-            "energy": "1",
-            "speed": "3"
+            "force": 7,
+            "intelligence": 6,
+            "durability": 7,
+            "energy": 1,
+            "speed": 3
         }
     },
     {
@@ -94,11 +94,11 @@
             "extension": "jpg"
         },
         "capacities": {
-            "force": "6",
-            "intelligence": "6",
-            "durability": "6",
-            "energy": "6",
-            "speed": "5"
+            "force": 6,
+            "intelligence": 6,
+            "durability": 6,
+            "energy": 6,
+            "speed": 5
         }
     },
     {
@@ -111,11 +111,11 @@
             "extension": "jpg"
         },
         "capacities": {
-            "force": "2",
-            "intelligence": "2",
-            "durability": "2",
-            "energy": "1",
-            "speed": "2"
+            "force": 2,
+            "intelligence": 2,
+            "durability": 2,
+            "energy": 1,
+            "speed": 2
         }
     },
     {
@@ -128,11 +128,11 @@
             "extension": "jpg"
         },
         "capacities": {
-            "force": "6",
-            "intelligence": "4",
-            "durability": "7",
-            "energy": "7",
-            "speed": "7"
+            "force": 6,
+            "intelligence": 4,
+            "durability": 7,
+            "energy": 7,
+            "speed": 7
         }
     },
     {
@@ -144,11 +144,11 @@
             "extension": "jpg"
         },
         "capacities": {
-            "force": "7",
-            "intelligence": "6",
-            "durability": "6",
-            "energy": "7",
-            "speed": "6"
+            "force": 7,
+            "intelligence": 6,
+            "durability": 6,
+            "energy": 7,
+            "speed": 6
         }
     },
     {
@@ -160,11 +160,11 @@
             "extension": "jpg"
         },
         "capacities": {
-            "force": "7",
-            "intelligence": "2",
-            "durability": "7",
-            "energy": "6",
-            "speed": "7"
+            "force": 7,
+            "intelligence": 2,
+            "durability": 7,
+            "energy": 6,
+            "speed": 7
         }
     },
     {
@@ -176,11 +176,11 @@
             "extension": "jpg"
         },
         "capacities": {
-            "force": "4",
-            "intelligence": "2",
-            "durability": "4",
-            "energy": "1",
-            "speed": "2"
+            "force": 4,
+            "intelligence": 2,
+            "durability": 4,
+            "energy": 1,
+            "speed": 2
         }
     }
 ]
