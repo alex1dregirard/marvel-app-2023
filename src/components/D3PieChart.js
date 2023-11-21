@@ -9,8 +9,16 @@ import * as d3 from "d3";
  * @param {*} displayValue 
  */
 const drawChart = (data = []) => {
-    // Define the radius
-    const outerRadius = 100;
+    // Remove the old svg
+    d3.select('#pie-container')
+        .select('svg')
+        .remove();
+
+    // Remove the elements with undefined values
+    const filteredData = data.filter((element) => { return element.value !== undefined });
+
+    // Define the diameter of the pie
+    const diameter = 100;
 
     // Define the margin
     const margin = {
@@ -18,37 +26,34 @@ const drawChart = (data = []) => {
     };
 
     // Define the width and height using the margin conventions
-    const width = 2 * outerRadius + margin.left + margin.right;
-    const height = 2 * outerRadius + margin.top + margin.bottom;
+    const width = 2 * diameter + margin.left + margin.right;
+    const height = 2 * diameter + margin.top + margin.bottom;
 
-    // Remove the elements with undefined values
-    const filteredData = data.filter((element) => { return element.value !== undefined });
-
-    // Remove the old svg
-    d3.select('#pie-container')
-        .select('svg')
-        .remove();
-
-    // Create the arc
+    // Define the radius
     const radius = Math.min(width, height) / 2;
 
-    const innerRadius = radius * 0.5;
-
+    // Create the arc
     const arc = d3.arc()
-        .innerRadius(innerRadius)
-        .outerRadius(radius - 1);
+        .cornerRadius(5) // Rounded corners
+        .innerRadius(radius * 0.5) // This is the size of the donut hole
+        .outerRadius(radius) // This is the size of the donut
+        .padAngle(0.011) // padding between slices
 
     // Create the pie
-    const pie = d3.pie()
-        .padAngle(1 / radius) // padding between slices
+    const pie = d3.pie(filteredData)
         .sort(null) // disable sorting of data
         .value(d => d.value);
+
+    // console.log(pie(filteredData));
 
     // Create the color scale
     const color = d3.scaleOrdinal()
         // colors based on filteredData
         .domain(filteredData.map(d => d.name))
-        .range(d3.quantize(t => d3.interpolateSpectral(t * 0.8 + 0.1), filteredData.length).reverse());
+        // .range(["red", "blue", "green", "yellow", "orange", "purple"]);
+        .range(d3.schemeDark2);
+        // .range(d3.quantize(t => d3.interpolateSpectral(t * 0.8 + 0.1), filteredData.length).reverse());
+        
 
     // Create the svg, with the right dimensions
     const svg = d3
@@ -56,8 +61,8 @@ const drawChart = (data = []) => {
         .append('svg')
         .attr("width", width)
         .attr("height", height)
-        .attr("viewBox", [-width / 2, -height / 2, width, height])
-
+        .attr("viewBox", [-width / 2, -height / 2, width, height]) // center the pie chart
+    
     // draw the donut
     svg.append("g")
         .selectAll()
@@ -68,12 +73,14 @@ const drawChart = (data = []) => {
 
     // add labels over the donut
     svg.append("g")
+        // text style
         .attr("font-family", "sans-serif")
         .attr("font-size", 12)
         .attr("text-anchor", "middle")
         .selectAll()
         .data(pie(filteredData))
         .join("text")
+        // center the text
         .attr("transform", d => `translate(${arc.centroid(d)})`)
         // add the name of the data
         .call(text => text.append("tspan")
@@ -88,7 +95,7 @@ const drawChart = (data = []) => {
             .attr("x", 0) // center the text
             .attr("y", "0.7em") // add a space between the name and the value
             .attr("fill-opacity", 0.7) // make it lighter
-            .text(d => d.data.value));
+            .text(d => d.data.value)); // add the value
 };
 
 /**
@@ -113,7 +120,6 @@ export default function D3PieChart({
             { name: 'Fighting', value: data?.fighting }
         ]
 
-        console.log(transformData)
         // draw the chart
         drawChart(transformData);
     }, [data]);
