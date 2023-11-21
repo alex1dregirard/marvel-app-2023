@@ -78,9 +78,17 @@ const drawChart = (data = []) => {
         // add the name of the data
         .call(text => text.append("tspan")
             .attr("id", d => `pie-labels-name-${d.data.name}`)
-            .attr("y", "-0.4em")
+            .attr("x", 0) // center the text
+            .attr("y", "-0.4em") // add a space between the name and the value
             .attr("font-weight", "bold")
             .text(d => d.data.name))
+        // add the value of the data
+        .call(text => text.filter(d => (d.endAngle - d.startAngle) > 0.25).append("tspan")
+            .attr("id", d => `pie-labels-value-${d.data.name}`)
+            .attr("x", 0) // center the text
+            .attr("y", "0.7em") // add a space between the name and the value
+            .attr("fill-opacity", 0.7) // make it lighter
+            .text(d => d.data.value));
 };
 
 /**
@@ -90,7 +98,7 @@ const drawChart = (data = []) => {
  * @param {*} displayTooltip
  * @param {*} displayValue
  */ 
-export function D3PieChart({
+export default function D3PieChart({
     data,
 }) {
     // useEffect is a hook that will run the code inside it only once when data is loaded
@@ -105,6 +113,7 @@ export function D3PieChart({
             { name: 'Fighting', value: data?.fighting }
         ]
 
+        console.log(transformData)
         // draw the chart
         drawChart(transformData);
     }, [data]);

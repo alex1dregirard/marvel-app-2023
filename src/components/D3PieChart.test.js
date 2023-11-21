@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { D3PieChart } from './D3PieChart';
+import D3PieChart from './D3PieChart';
 
 describe('D3PieChart', () => {
     test('renders without error', () => {
