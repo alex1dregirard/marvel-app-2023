@@ -1,11 +1,11 @@
 name: Quality
 on:
   push:
-    branches:
-      - '!dependabot/**' # Ignore Dependabot branches.
+    branches-ignore:
+      - '**/dependabot/**'
   pull_request:
-    branches:
-      - '!dependabot/**' # Ignore Dependabot branches.
+    branches-ignore: 
+      - '**/dependabot/**'
 jobs:
   sonarcloud:
     name: Quality
