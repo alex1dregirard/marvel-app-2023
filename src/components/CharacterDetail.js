@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function CharacterDetail({ character = {} }) {
     return (
         <div>            
@@ -11,5 +13,17 @@ function CharacterDetail({ character = {} }) {
         </div>
     );
 }
+
+CharacterDetail.propTypes = {
+    character: PropTypes.shape({
+        name: PropTypes.string,
+        description: PropTypes.string,
+        modified: PropTypes.string,
+        thumbnail: PropTypes.shape({
+            path: PropTypes.string,
+            extension: PropTypes.string,
+        }),
+    }),
+};
 
 export default CharacterDetail;
