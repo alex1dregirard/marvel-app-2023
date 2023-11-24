@@ -14,12 +14,12 @@ describe('NumberOfCharacters', () => {
   });
 
   it('renders "There is 1 character" when characters prop has 1 item', () => {
-    const { getByText } = render(<NumberOfCharacters characters={['Iron Man']} />);
+    const { getByText } = render(<NumberOfCharacters characters={[{id: '1', name: 'Iron Man'}]} />);
     expect(getByText('There is 1 character')).toBeInTheDocument();
   });
 
   it('renders "There is 2 characters" when characters prop has 2 items', () => {
-    const { getByText } = render(<NumberOfCharacters characters={['Iron Man', 'Spider-Man']} />);
+    const { getByText } = render(<NumberOfCharacters characters={[{id: '1', name: 'Iron Man'}, {id: '2', name: 'Captain America'}]} />);
     expect(getByText('There is 2 characters')).toBeInTheDocument();
   });
 
