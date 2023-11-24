@@ -69,7 +69,7 @@ describe('CharacterDetailPage', () => {
         // expect to have a div with the id "pie-container"
         expect(document.getElementById('pie-container')).toBeInTheDocument();
 
-        // expect to a an div with class "recharts-responsive-container"
-        expect(document.querySelector('.recharts-responsive-container')).toBeInTheDocument();
+        // expect to a an div with class "recharts-wrapper"
+        expect(document.querySelector('.recharts-wrapper')).toBeInTheDocument();
     });
 });

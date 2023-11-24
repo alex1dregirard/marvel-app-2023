@@ -3,19 +3,43 @@ import { useEffect } from "react";
 import * as d3 from "d3";
 
 /**
+ * Prepare the data for the pie chart
+ * @param {*} data 
+ * @returns 
+ */
+export const prepareData = (data = []) => {
+    const transformData = [
+        { name: 'Force', value: data?.force },
+        { name: 'Intelligence', value: data?.intelligence },
+        { name: 'Energy', value: data?.energy },
+        { name: 'Speed', value: data?.speed },
+        { name: 'Durability', value: data?.durability },
+        { name: 'Fighting', value: data?.fighting }
+    ];
+
+    // Remove the elements with undefined values
+    return transformData.filter((element) => { return element.value !== undefined; });
+}
+
+/**
  * Draw the pie chart
  * @param {*} data 
  * @param {*} displayTooltip 
  * @param {*} displayValue 
  */
-const drawChart = (data = []) => {
+const drawChart = (data) => {
     // Remove the old svg
     d3.select('#pie-container')
         .select('svg')
         .remove();
 
-    // Remove the elements with undefined values
-    const filteredData = data.filter((element) => { return element.value !== undefined });
+    // Create the color scale
+    const color = d3.scaleOrdinal()
+        // colors based on data
+        .domain(data.map(d => d.name))
+        // .range(["red", "blue", "green", "yellow", "orange", "purple"]);
+        .range(d3.schemeDark2);
+    //.range(d3.quantize(t => d3.interpolateSpectral(t * 0.8 + 0.1), filteredData.length).reverse());
 
     // Define the diameter of the pie
     const diameter = 100;
@@ -40,20 +64,9 @@ const drawChart = (data = []) => {
         .padAngle(0.011) // padding between slices
 
     // Create the pie
-    const pie = d3.pie(filteredData)
+    const pie = d3.pie(data)
         .sort(null) // disable sorting of data
         .value(d => d.value);
-
-    // console.log(pie(filteredData));
-
-    // Create the color scale
-    const color = d3.scaleOrdinal()
-        // colors based on filteredData
-        .domain(filteredData.map(d => d.name))
-        // .range(["red", "blue", "green", "yellow", "orange", "purple"]);
-        .range(d3.schemeDark2);
-        // .range(d3.quantize(t => d3.interpolateSpectral(t * 0.8 + 0.1), filteredData.length).reverse());
-        
 
     // Create the svg, with the right dimensions
     const svg = d3
@@ -62,11 +75,11 @@ const drawChart = (data = []) => {
         .attr("width", width)
         .attr("height", height)
         .attr("viewBox", [-width / 2, -height / 2, width, height]) // center the pie chart
-    
+
     // draw the donut
     svg.append("g")
         .selectAll()
-        .data(pie(filteredData))
+        .data(pie(data))
         .join("path")
         .attr("fill", d => color(d.data.name))
         .attr("d", arc)
@@ -78,7 +91,7 @@ const drawChart = (data = []) => {
         .attr("font-size", 12)
         .attr("text-anchor", "middle")
         .selectAll()
-        .data(pie(filteredData))
+        .data(pie(data))
         .join("text")
         // center the text
         .attr("transform", d => `translate(${arc.centroid(d)})`)
@@ -104,24 +117,17 @@ const drawChart = (data = []) => {
  * @param {*} data
  * @param {*} displayTooltip
  * @param {*} displayValue
- */ 
+ */
 export default function D3PieChart({
     data,
 }) {
     // useEffect is a hook that will run the code inside it only once when data is loaded
     useEffect(() => {
         // transform data
-        const transformData = [
-            { name: 'Force', value: data?.force },
-            { name: 'Intelligence', value: data?.intelligence },
-            { name: 'Energy', value: data?.energy },
-            { name: 'Speed', value: data?.speed },
-            { name: 'Durability', value: data?.durability },
-            { name: 'Fighting', value: data?.fighting }
-        ]
+        const preparedData = prepareData(data);
 
         // draw the chart
-        drawChart(transformData);
+        drawChart(preparedData);
     }, [data]);
 
     return (
