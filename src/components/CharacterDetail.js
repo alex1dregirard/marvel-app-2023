@@ -1,6 +1,8 @@
+import PropTypes from 'prop-types';
+
 function CharacterDetail({ character = {} }) {
     return (
-        <div>
+        <div>            
             <h2>{character.name}</h2>
             {
                 // if character.thumbnail is not null, then render the image
@@ -11,5 +13,17 @@ function CharacterDetail({ character = {} }) {
         </div>
     );
 }
+
+CharacterDetail.propTypes = {
+    character: PropTypes.shape({
+        name: PropTypes.string,
+        description: PropTypes.string,
+        modified: PropTypes.string,
+        thumbnail: PropTypes.shape({
+            path: PropTypes.string,
+            extension: PropTypes.string,
+        }),
+    }),
+};
 
 export default CharacterDetail;

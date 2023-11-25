@@ -1,7 +1,18 @@
-export function NumberOfCharacters({ characters = [] }) {
-    if (characters.length === 0) {
-      return <p>There is no characters</p>;
-    }
+import PropTypes from 'prop-types';
 
-    return <p>There is {characters.length} characters</p>;
-}  
+export function NumberOfCharacters({ characters = [] }) {
+  return (
+    <p>
+      There is {characters.length === 0 ? 'no' : characters.length} character{characters.length !== 1 ? 's' : ''}
+    </p>
+  );
+}
+
+NumberOfCharacters.propTypes = {
+  characters: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ),
+};
