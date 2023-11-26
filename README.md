@@ -38,12 +38,7 @@ Execution des tests uniquement une fois avec un rapport détaillé de la couvert
 npm run test:coverage
 ```
 
-```mermaid
-graph LR
-A[marvel-app] -- npm install --> B((node_modules))
-A -- npm start --> C(http://localhost:3000)
-A -- npm test --> D((tests))
-```
+## Conception
 
 Le projet est composé de 4 pages :
 
