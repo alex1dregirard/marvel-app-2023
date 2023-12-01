@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-html-version": "browser-sync start --config bs-config.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -20,14 +19,13 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.18.0",
     "react-scripts": "5.0.1",
-    "recharts": "^2.10.0",
+    "recharts": "^2.10.1",
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.1.2",
-    "@testing-library/user-event": "^14.5.1",
-    "browser-sync": "^2.29.3"
+    "@testing-library/user-event": "^14.5.1"
   },
   "eslintConfig": {
     "extends": [

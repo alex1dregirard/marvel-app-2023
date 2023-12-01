@@ -8,9 +8,9 @@ describe('CharactersList', () => {
     it('renders a list of characters', () => {
         // when
         const characters = [
-            { id: 1, name: 'Iron Man' },
-            { id: 2, name: 'Captain America' },
-            { id: 3, name: 'Thor' },
+            { id: '1', name: 'Iron Man' },
+            { id: '2', name: 'Captain America' },
+            { id: '3', name: 'Thor' },
         ];
 
         // then
